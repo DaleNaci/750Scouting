@@ -60,8 +60,8 @@ function submitInMatch(){
     teamRef.child("in-match/"+teamI+"/match"+count).set({
         "teamI":teamI,
         "conesStacked":conesStacked,
-        "mogos":mogos,
         "highestStack":highestStack,
+        "mogos":mogos,
         "overallNotesI":overallNotesI
     });
 }
@@ -82,5 +82,17 @@ function searchPreMatch(){
 }
 
 function searchInMatch(){
+    var team = document.getElementById("search").value
+    var count = firebase.database("in-match/"+team+"matchCount").ref().val();
     
+    var i;
+    for(i = 0; i<count; i++){
+        var firebaseTeamRef = firebase.database().ref().child("/in-match/"+team+"match"+count);
+        firebaseTeamRef.on('value', snap => {
+            var conesStacked = snap.child("conesStacked").val();
+            var mogos = snap.child("mogos").val();
+            var highestStack = snap.child("highestStack").val();
+            var overallNotesI = snap.child("overallNotesI").val();
+        });
+    }
 }
