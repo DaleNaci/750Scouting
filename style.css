@@ -15,7 +15,7 @@ hr.style-two {
 	text-align: center;
 }
 
-.container #search-bar {
+.container {
 	text-align: center;
 }
 
@@ -70,7 +70,7 @@ a {
 }
 
 #searchBarBtn {
-	display: inline-block;
+
 }
 
 #team-info {
@@ -82,3 +82,8 @@ a {
 	border: 2px solid lightgray;
 	background: #fefefe;
 }
+
+.container < .info {
+	width: 10%;
+}
+
