@@ -87,6 +87,14 @@ function searchPreMatch(){
         var lift = snap.child("lift").val();
         var intake = snap.child("intake").val();
         var overallNotes = snap.child("overallNotesP").val();
+        
+        document.getElementById("team-name").innerText = teamP;
+        document.getElementById("cones").innerText = cones;
+        document.getElementById("mogo").innerText = mogoZone;
+        document.getElementById("drive").innerText = drive;
+        document.getElementById("lift").innerText = lift;
+        document.getElementById("intake").innerText = intake;
+        document.getElementById("comments").innerText = overallNotes;
     });
 }
 
