@@ -1,28 +1,30 @@
 //database references
 var teamRef = firebase.database().ref();
 
-
-//elements
-var getTeam = document.getElementById();
-
 //pre-match inputs
-var teamTextP = document.getElementById();
-var conesText = document.getElementById();
-var mogoZoneText = document.getElementById();
-var driveText = document.getElementById();
-var liftText = document.getElementById();
-var intakeText = document.getElementById();
-var overallNotesTextP = document.getElementById();
+var teamTextP = document.getElementById("teamTextP");
+var conesText = document.getElementById("conesText");
+var mogoZoneText = document.getElementById("mogoZoneText");
+var driveText = document.getElementById("driveText");
+var liftText = document.getElementById("liftText");
+var intakeText = document.getElementById("intakeText");
+var overallNotesTextP = document.getElementById("overallNotesTextP");
 
 //in-match inputs
-var teamTextI = document.getElementById();
-var conesStackedText = document.getElementById();
-var mogosText = document.getElementById();
-var highestStackText = document.getElementById();
-var overallNotesTextI = document.getElementById();
+var teamTextI = document.getElementById("teamTextI");
+var conesStackedText = document.getElementById("conesStackedText");
+var mogosText = document.getElementById("mogoText");
+var highestStackText = document.getElementById("highestStackText");
+var overallNotesTextI = document.getElementById("overallNotesTextI");
+
+//Test Function
+function test() {
+    alert("Test works");
+}
 
 //Input Scouting Notes
 function submitPreMatch(){
+    alert("submitPreMatch");
     var teamP = teamTextP.value;
     var cones = conesText.value;
     var mogoZone = mogoZoneText.value;
@@ -43,6 +45,11 @@ function submitPreMatch(){
 }
 
 
+
+
+
+/*
+
 function submitInMatch(){
     var teamI = teamTextI.value;
     var conesStacked = conesStackedText.value;
@@ -53,10 +60,12 @@ function submitInMatch(){
     var count = firebase.database("in-match/"+teamI+"matchCount").ref().val();
     
     matchRef.once('value').then(function(snapshot) {
-        teamRef.child.("in-match").set({
+        teamRef.child.("in-match/"+teamI).set({
             "match-counter": snapshot.numChildren()-1;
+        });
     });
     
+
     teamRef.child("in-match/"+teamI+"/match"+count).set({
         "teamI":teamI,
         "conesStacked":conesStacked,
@@ -64,7 +73,7 @@ function submitInMatch(){
         "mogos":mogos,
         "overallNotesI":overallNotesI
     });
-}
+}*/
 
 //Get info
 
