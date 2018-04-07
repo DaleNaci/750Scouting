@@ -1,6 +1,7 @@
 //database references
 var teamRef = firebase.database().ref();
 
+var count = 0;
 //pre-match inputs
 var teamTextP = document.getElementById("teamTextP");
 var conesText = document.getElementById("conesText");
@@ -52,8 +53,7 @@ function submitInMatch(){
     var highestStack = highestStackText.value;
     var overallNotesI = overallNotesTextI.value;
     var matchRef = firebase.database().ref("in-match/"+teamI);
-    var countRef = firebase.database().ref("in-match/"+teamI+"/matchCount");
-    var count = 0;
+    var countRef = firebase.database().ref("in-match/"+teamI+"/match-counter");
 
     countRef.once('value').then(function(snapshot){
         count = snapshot.val();
@@ -78,7 +78,8 @@ function submitInMatch(){
 //Get info
 
 function searchPreMatch(){
-    var firebaseTeamRef = firebase.database().ref().child("/pre-match/"+document.getElementById("search").value);
+    window.alert("working");
+    var firebaseTeamRef = firebase.database().ref().child("/pre-match/"+document.getElementById("searchBarText").value);
     firebaseTeamRef.on('value', snap => {
         var teamP = snap.child("teamP").val();
         var cones = snap.child("cones").val();
@@ -88,13 +89,14 @@ function searchPreMatch(){
         var intake = snap.child("intake").val();
         var overallNotes = snap.child("overallNotesP").val();
         
-        document.getElementById("team-name").innerText = teamP;
-        document.getElementById("cones").innerText = cones;
-        document.getElementById("mogo").innerText = mogoZone;
-        document.getElementById("drive").innerText = drive;
-        document.getElementById("lift").innerText = lift;
-        document.getElementById("intake").innerText = intake;
-        document.getElementById("comments").innerText = overallNotes;
+        
+        document.getElementById("team-name").textContent = teamP;
+        document.getElementById("cones").textContent = cones;
+        document.getElementById("mogo").textContent = mogoZone;
+        document.getElementById("drive").textContent = drive;
+        document.getElementById("lift").textContent = lift;
+        document.getElementById("intake").textContent = intake;
+        document.getElementById("comments").textContent = overallNotes;
     });
 }
 
@@ -110,6 +112,8 @@ function searchInMatch(){
             var mogos = snap.child("mogos").val();
             var highestStack = snap.child("highestStack").val();
             var overallNotesI = snap.child("overallNotesI").val();
+            
+            $("#saiIsUgly").append("<tr><td>"+conesStacked+"</td><td>"+mogos+"</td><td>"+highestStack+"</td><td>"+overallNotesI+"</td></tr>");
         });
     }
 }

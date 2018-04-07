@@ -22,7 +22,7 @@
 		</div>
 			<div id="search-bar">
 				<input type="text" placeholder=" Search for a team" value="" class="search-box" autocomplete="off" name="" id="searchBarText">
-				<button type="button" class="btn btn-primary" id="searchBarBtn">Search</button>
+				<button type="button" class="btn btn-primary" id="searchBarBtn" onClick="searchPreMatch(); searchInMatch();">Search</button>
 			</div>
 	</div>
 	<div class="container">
@@ -44,7 +44,7 @@
 									<th scope="col">Highest Stack</th>
 								</tr>
 							</thead>
-							<tbody>
+							<tbody id="saiIsUgly">
 								<tr>
 									<th scope="row">12</th>
 									<td>3</td>
