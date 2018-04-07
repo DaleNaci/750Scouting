@@ -57,16 +57,8 @@ a {
 	text-align: left;
 }
 
-#pre-match {
-	position: absolute;
-	top: 20px;
-	left: 1000px;
-}
-
-#in-match {
-	position: absolute;
-	top: 80px;
-	left: 1000px;
+.btn {
+	margin: 10px 0px;
 }
 
 #searchBarBtn {
@@ -83,7 +75,9 @@ a {
 	background: #fefefe;
 }
 
-.container < .info {
-	width: 10%;
+#pmf-container {
+	width: 25%;
+	height: 100%;
+	font-size: 25px;
 }
 
