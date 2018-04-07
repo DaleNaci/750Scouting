@@ -13,7 +13,7 @@ var overallNotesTextP = document.getElementById("overallNotesTextP");
 //in-match inputs
 var teamTextI = document.getElementById("teamTextI");
 var conesStackedText = document.getElementById("conesStackedText");
-var mogosText = document.getElementById("mogoText");
+var mogosText = document.getElementById("mogosText");
 var highestStackText = document.getElementById("highestStackText");
 var overallNotesTextI = document.getElementById("overallNotesTextI");
 
@@ -24,7 +24,6 @@ function test() {
 
 //Input Scouting Notes
 function submitPreMatch(){
-    alert("submitPreMatch");
     var teamP = teamTextP.value;
     var cones = conesText.value;
     var mogoZone = mogoZoneText.value;
@@ -45,23 +44,24 @@ function submitPreMatch(){
 }
 
 
-
-
-
-/*
-
 function submitInMatch(){
+    alert("submitInMatch");
     var teamI = teamTextI.value;
     var conesStacked = conesStackedText.value;
     var mogos = mogosText.value;
     var highestStack = highestStackText.value;
     var overallNotesI = overallNotesTextI.value;
-    var matchRef = firebase.database("in-match/"+teamI).ref();
-    var count = firebase.database("in-match/"+teamI+"matchCount").ref().val();
+    var matchRef = firebase.database().ref("in-match/"+teamI);
+    var countRef = firebase.database().ref("in-match/"+teamI+"/matchCount");
+    var count = 0;
+
+    countRef.once('value').then(function(snapshot){
+        count = snapshot.val();
+    });
     
     matchRef.once('value').then(function(snapshot) {
-        teamRef.child.("in-match/"+teamI).set({
-            "match-counter": snapshot.numChildren()-1;
+        teamRef.child("in-match/"+teamI).update({
+            "match-counter": snapshot.numChildren()-1
         });
     });
     
@@ -73,7 +73,7 @@ function submitInMatch(){
         "mogos":mogos,
         "overallNotesI":overallNotesI
     });
-}*/
+}
 
 //Get info
 
