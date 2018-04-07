@@ -1,5 +1,5 @@
 //database references
-var teamRef = firebase.database.ref();
+var teamRef = firebase.database().ref();
 
 
 //elements
@@ -17,7 +17,6 @@ var overallNotesTextP = document.getElementById();
 //in-match inputs
 var teamTextI = document.getElementById();
 var conesStackedText = document.getElementById();
-var conesDroppedText = document.getElementById();
 var mogosText = document.getElementById();
 var highestStackText = document.getElementById();
 var overallNotesTextI = document.getElementById();
@@ -42,27 +41,25 @@ function submitPreMatch(){
         "overallNotesP":overallNotesP
     });
 }
+
+
 function submitInMatch(){
     var teamI = teamTextI.value;
     var conesStacked = conesStackedText.value;
-    var conesDropped = conesDroppedText.value;
     var mogos = mogosText.value;
     var highestStack = highestStackText.value;
     var overallNotesI = overallNotesTextI.value;
+    var matchRef = firebase.database("in-match/"+teamI).ref();
+    var count = firebase.database("in-match/"+teamI+"matchCount").ref().val();
     
-    teamRef.child("in-match/"+teamI).set({
-        "teamI":teamI,
-        "match-counter": 0
-        teamRef.child("in-match/"+teamI+"/match-counter").once('value', function(snapshot) {
-            if (snapshot.exists()) {
-                
-            }
-        });
+    matchRef.once('value').then(function(snapshot) {
+        teamRef.child.("in-match").set({
+            "match-counter": snapshot.numChildren()-1;
     });
-    teamRef.child("in-match/"+teamI).set({
+    
+    teamRef.child("in-match/"+teamI+"/match"+count).set({
         "teamI":teamI,
         "conesStacked":conesStacked,
-        "conesDropped":conesDropped,
         "mogos":mogos,
         "highestStack":highestStack,
         "overallNotesI":overallNotesI
