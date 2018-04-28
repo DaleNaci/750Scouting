@@ -1,6 +1,6 @@
 # 750Scouting
-Scouting App for South Brunswick HS Robotics teams (750).
+📋 Scouting App for South Brunswick HS Robotics teams (750).
 
 Initially developed at the HackSB competition.
 
-WIP
+Still a work in progress.
